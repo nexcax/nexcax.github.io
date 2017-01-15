@@ -4,7 +4,7 @@ var datos_en={
     "info":{
       "nombre":"Francisco Xavier",
       "apellido":"Castillo Obando",
-      "direccion":"Cesar Borja Cordero St. and Albert Einstein, Bldg. Vista Valle, Dept. 2",
+      "direccion":"Diego de Vasquez N73-72 y Calle C",
       "telefono":"+593 984 265 417",
       "celular":"+593 984 265 417",
       "correo":"nex.cax@gmail.com",
@@ -23,7 +23,7 @@ var datos_en={
       {"tipo":"Superior","titulo":"PHP and MYSQL advance developer","institucion":"National Polythecnic School - Ecuador","anio":"2009"},
       {"tipo":"Superior","titulo":"Systems Engineering","institucion":"Metropolitan University","anio":"2009"},
       {"tipo":"Superior","titulo":"Technologist in Analysis and software development","institucion":"Cordillera Technology Institute","anio":"2007"},
-      {"tipo":"Secundario","titulo":"Science barchelor","institucion":"Sanchez y Cifuentes School","anio":"2000"}
+      {"tipo":"High School","titulo":"Science barchelor","institucion":"Sanchez y Cifuentes School","anio":"2000"}
     ],
     "experiencia":[
       {"cargo":"IT Head","empresa":"Cuestionarix.com","fecha":"2015 to current date","descripcion":"Head of IT and project controller for enterprise develoment and internal core generation","contacto":"Human resources","telefono_contacto":"+593 383 0050 ext: 186"},

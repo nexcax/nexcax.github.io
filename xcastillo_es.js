@@ -4,7 +4,7 @@ var datos_es={
     "info":{
       "nombre":"Francisco Xavier",
       "apellido":"Castillo Obando",
-      "direccion":"Cesar Borja Cordero y Albert Einstein, Edf. Vista Valle, Dept. 2",
+      "direccion":"Diego de Vasquez N73-72 y Calle C",
       "telefono":"+593 984 265 417",
       "celular":"+593 984 265 417",
       "correo":"nex.cax@gmail.com",

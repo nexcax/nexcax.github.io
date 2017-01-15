@@ -1,4 +1,4 @@
-{
+var datos={
   "creador":
   {
     "info":{
@@ -68,4 +68,4 @@
     "portafolio":"Portfolio",
     "sitios_web":"Websites"
   }
-}
+};

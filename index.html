@@ -117,19 +117,22 @@ body{
 		</div>
 	</article>
 </section>
-
+<script src="./xcastillo_es.js"></script>
 <script>
 var app=angular.module("xcastillo",[]);
 app.controller("cv",['$scope','$http',function($scope,$http){
 	$scope.creador={};
 	$scope.etiquetas={};
+	$scope.creador=datos.creador;
+	$scope.etiquetas=datos.etiquetas;
 	$scope.cambiarLenguaje=function(l){
-		$http.post("./xcastillo_"+l+".json").success(function(data){
-			$scope.creador=data.creador;
-			$scope.etiquetas=data.etiquetas;
-		});
+		//$http.post("./xcastillo_"+l+".json").success(function(data){
+			//$scope.creador=data.creador;
+			//$scope.etiquetas=data.etiquetas;
+		//});
+		window.location.href="index.html?l="+l;
 	};
-	$scope.cambiarLenguaje("es");
+	//$scope.cambiarLenguaje("es");
 }]);
 </script>
 </body>

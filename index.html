@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html ng-app="xcastillo" ng-controller="cv">
+<head>
+<title>{{creador.info.nombre}} {{creador.info.apellido}}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="utf-8">
+<link rel="shortcut icon" href="img/nexcax.png?v=1" type="image/x-icon">
+<meta name="author" content="creador.info.nombre">
+<script src="./js/jquery.min.js"></script>
+<script src="./js/angular.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+<style>
+body{
+	font-size:16px;
+}
+</style>
+</head>
+<body>
+<div class="text-right hidden-print">
+	<a href="javascript:void(0)" ng-click="cambiarLenguaje('es');">ES</a>
+	<a href="javascript:void(0)" ng-click="cambiarLenguaje('en');">EN</a>
+</div>
+
+<section class="container">
+	<article class="row">
+		<div>
+			<div class="col-sm-4 col-sm-offset-4" style="text-align:center;margin-top:-75px;">
+				<img src="img/xcastillo.jpg" border="0" class=" img-circle" />
+			</div><br clear="all">
+			<div style="text-align:center;">
+				<h2>
+					{{creador.info.nombre}} {{creador.info.apellido}}
+					<br><small>{{creador.info.ciudad_natal}} <span class="fa fa-map-marker"></span></small>
+				</h2>
+				<hr>
+				<label class="label label-default">{{etiquetas.profesion}}:</label> 
+				{{creador.laboral.profesion}} 
+			</div><br>
+			<div class="col-sm-10 col-sm-offset-1">
+			<h4>{{etiquetas.informacion_contacto}}</h4><hr>
+				<div class="col-md-4">
+					<span class="fa fa-envelope-o"></span> {{creador.info.correo}}
+				</div>
+				<div class="col-md-4">
+					<span class="fa fa-phone"></span> {{creador.info.telefono}}
+				</div>
+
+				<div class="col-md-4">
+					<span class="fa fa-mobile"></span> {{creador.info.celular}}
+				</div><br clear="all">
+				<div class="col-md-4">
+					<span class="fa fa-gift"></span> {{creador.info.fecha_nacimiento}}
+				</div>
+				<div class="col-md-4">
+					<span class="fa fa-heart-o"></span> {{creador.info.estado_civil}}
+				</div>
+				<div class="col-md-4">
+					<span class="fa fa-graduation-cap"></span> {{creador.laboral.titulo}}
+				</div>
+				<br clear="all">
+			</div><br clear="all">
+			<div class="col-sm-10 col-sm-offset-1">
+				<h4>{{etiquetas.domicilio_actual}}: </h4><hr>
+				{{creador.info.direccion}}<br>&nbsp;
+			</div><br clear="all">
+			<div class="col-sm-10 col-sm-offset-1">
+				<h4>{{etiquetas.instruccion}}</h4>
+				<table class="table">
+					<tr ng-repeat="ins in creador.estudios">
+						<th>{{ins.tipo}}</th>
+						<td>
+							{{ins.titulo}}, {{ins.institucion}}. {{ins.anio}}.
+						</td>
+					</tr>
+				</table>
+			</div><br clear="all">
+			<div class="col-sm-10 col-sm-offset-1">
+				<h4>{{etiquetas.experiencia_laboral}}</h4><hr>
+				<div class="list-group">
+
+					<div ng-repeat="ex in creador.experiencia" class="list-group-item">
+						<h4 class="list-group-item-heading">{{ex.cargo}} - {{ex.empresa}} <small>({{ex.fecha}})</small></h4>
+						<p class="list-group-item-text">
+							{{ex.descripcion}}<br>
+							<small>{{ex.contacto}} {{ex.telefono_contacto}}</small>
+						</p>
+					</div>
+					
+				</div>
+			</div><br clear="all">
+			
+			<div class="col-sm-10 col-sm-offset-1">
+				<h4>{{etiquetas.habilidades}}</h4><hr>
+				
+				<div class="media" ng-repeat="c in creador.conocimientos">
+				  <div class="pull-left">
+				    <img ng-src="{{c.logo}}" style="background:#fff;" width="106">
+				  </div>
+				  <div class="media-body">
+				    <h4 class="media-heading">{{c.nombre}}</h4>
+				    {{c.descripcion}}
+				  </div>
+				</div>
+
+			</div><br clear="all">
+			<br>
+			<div class="col-sm-10 col-sm-offset-1">
+				<h4>{{etiquetas.portafolio}}</h4><hr>
+				<b>{{etiquetas.sitios_web}}</b>
+				<div ng-repeat="p in creador.portafolio">
+					<a href="{{p.link}}" target="_blank" class="hidden-print">{{p.link}}</a><b class="visible-print-inline-block">{{p.link}}</b>: <small class="text-muted">{{p.descripcion}}</small>
+				</div>
+			</div><br clear="all">
+			
+		</div>
+	</article>
+</section>
+
+<script>
+var app=angular.module("xcastillo",[]);
+app.controller("cv",['$scope','$http',function($scope,$http){
+	$scope.creador={};
+	$scope.etiquetas={};
+	$scope.cambiarLenguaje=function(l){
+		$http.post("./xcastillo_"+l+".json").success(function(data){
+			$scope.creador=data.creador;
+			$scope.etiquetas=data.etiquetas;
+		});
+	};
+	$scope.cambiarLenguaje("es");
+}]);
+</script>
+</body>
+</html>
